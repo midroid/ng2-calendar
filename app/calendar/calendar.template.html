@@ -1,0 +1,25 @@
+<calendar selected="day">
+<div class="header">
+    <i class="fa fa-angle-left" (click)="previous()"><</i>
+    <span>{{month.format("MMMM, YYYY")}}</span>
+    <i class="fa fa-angle-right" (click)="next()">></i>
+</div>
+<div class="week names">
+    <span class="day">Sun</span>
+    <span class="day">Mon</span>
+    <span class="day">Tue</span>
+    <span class="day">Wed</span>
+    <span class="day">Thu</span>
+    <span class="day">Fri</span>
+    <span class="day">Sat</span>
+</div>
+<div class="week" *ngFor="#week of weeks">
+    <span class="day"
+        (click)="select(day)"
+        [ngClass]="{addtolist : isInTheList(day)}"
+        [class.today]="day.isToday"
+        [class.different-month]="!day.isCurrentMonth"
+        *ngFor="#day of week.days">{{day.number}}
+    </span>
+</div>
+</calendar>
